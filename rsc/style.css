@@ -1,0 +1,220 @@
+/*Positioning*/
+
+div.skillpreferences{
+	float: right;
+	display: block;
+}
+
+.abilities{
+	float: left;
+	display: block;
+}
+
+#done{
+	background-color: #eeeeee;
+	padding: 4px;
+}
+
+/*label{
+	display: inline-block;
+}*/
+
+section{
+	margin-bottom: 10px;
+}
+
+/*input[type=number]{
+	width: 3em;
+}*/
+
+fieldset{
+	border-radius: 4px; /* future proofing */
+	border: solid 2px #CCCCCC;
+}
+
+legend{
+	font-size: 1.25em;
+	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+	font-weight: bold;
+}
+
+/*	Ability Selection
+--------------------------------*/
+#ability-preference{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#ability-preference li{
+	display : block;
+	
+	/*width: 6em;*/
+	border: solid 1px gray;
+	border-radius: 5px;
+	margin: 1px;
+	height: 1.2em;
+	
+	/*OUT LINE OF TEXT*/
+	text-shadow: 
+	0px 1px 1px black,
+	0px -1px 1px black,
+	-1px 0px 1px black,
+	1px 0px 1px black;
+	color: white;
+	
+	/* font selected from http://cssfontstack.com/ */
+	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+	text-align: center;
+	font-size: 1.25em;
+}
+
+#str{
+	/*background: linear-gradient(to bottom right, white, red);*/
+	background: red;
+}
+
+#dex{
+	/*background: linear-gradient(to bottom right, white, yellow);*/
+	background: yellow;
+}
+
+#con{
+	/*background: linear-gradient(to bottom right, white, green);*/
+	background: green;
+}
+
+#int{
+	/*background: linear-gradient(to bottom right, white, teal);*/
+	background: teal;
+}
+
+#wis{
+	/*background: linear-gradient(to bottom right, white, orange);*/
+	background: orange;
+}
+
+#cha{
+	/*background: linear-gradient(to bottom right, white, #CC00FF);*/
+	background: #CC00FF;
+}
+
+/* ICONS */
+.button-make{
+	display:inline-block;
+	vertical-align: middle;
+	
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+	font-size: 1.1em;
+}
+
+.button-make-icon{
+	display:inline-block;
+	vertical-align: middle;
+	margin: .3em .3em .3em .3em;
+}
+
+.icon{
+	display:inline-block;
+	margin-right: .5em;
+	/*surprisingly hard to do this*/
+	background-image: url("../jquery/css/ui-lightness/images/ui-icons_ef8c08_256x240.png");
+}
+
+/* Expandable nonsense. A rather hacky attempt to make expandables resembling accordion */
+.expandable h3{
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+	font-size: 1em;
+	
+	padding: .5em .5em .5em .7em;
+	margin: 0px;
+	
+	margin-top: 2px;
+}
+
+.expandable div{
+	background-color: #F0F0F0;
+	border-bottom: solid 1px #cccccc;
+	border-left: solid 1px #cccccc;
+	border-right: solid 1px #cccccc;
+	border-radius: 0 0 4px 4px;
+	padding: .35em .35em .35em .35em;
+}
+
+.expandable-open{
+	border: solid 1px #fbcb09;
+	border-radius: 4px 4px 0 0;
+	color: #eb8f00;
+}
+
+.expandable-closed{
+	background: linear-gradient(to bottom, #f6f6f6 0%,#f6f6f6 50%,#000000 50%, #eeeeee 50%, #eeeeee 100%);
+	border: solid 1px #cccccc;
+	border-radius: 4px;
+	color: #1c94c4;
+}
+
+/* Character sheet styling 
+---------------------------*/
+
+div.npc{
+	/* font selected from http://cssfontstack.com/ */
+	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+	background-color: #FFEFDB;
+	border-color: #FFEFE0;
+	border-style:solid;
+	border-radius: 15px 0 0 0;
+	margin: 5px;
+	padding: 5px;
+	box-shadow: 6px 6px 6px 6px #CCC;
+	max-width: 35em;
+}
+
+ul.spells{
+	list-style-type: none;
+	padding-left:0px;
+	margin: 0px;
+	padding-left:5px;
+}
+
+ul.spells li{
+	font-size: .9em;
+	color: brown;
+}
+
+ul.notes{
+	list-style-type: none;
+	padding-left:0px;
+	margin: 0px;
+	padding-left:4px;
+}
+
+ul.notes li{
+	font-size: .8em;
+	color: gray;
+}
+
+ul.skill_mods {
+	list-style-type: none;
+	padding-left:0px;
+	list-style: none;
+	font-size: .9em;
+	margin: 0px;
+}
+
+ul.skill_mods li {
+  display: inline;
+}
+
+ul.skill_mods li:after {
+  content: ", ";
+}
+
+ul.skill_mods li:last-child:after {
+    content: "";
+}
+
+.features{
+	font-size: .8em;
+	color: #404040;
+}

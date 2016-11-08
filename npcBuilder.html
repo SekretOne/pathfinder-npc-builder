@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	
+	<!-- jquery libraries -->
+	<script src="jquery/js/jquery-1.10.2.js"></script>
+	<script src="jquery/js/jquery-ui-1.10.4.custom.min.js"></script>
+	<script src="jquery/js/jquery.ui.touch-punch.min.js"></script>
+	
+	<!-- webapp resource scripts -->
+	<script src="rsc/statgen.js"></script>
+	<script src="rsc/skillgen.js"></script>
+	<script src="rsc/magic.js"></script>
+	<script src="rsc/abildragndrop.js"></script>
+	<script src="rsc/races.js"></script>
+	<script src="rsc/classgen.js"></script>
+	
+	<script src="rsc/ui.js"></script>
+	
+	<!--Link the style sheet -->
+	<link rel="stylesheet" type="text/css" href="jquery/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
+	<link rel="stylesheet" type="text/css" href="rsc/style.css" />
+	
+	<!-- Title -->
+	<title>NPC Builder: When you need stats fast</title>
+	</head>
+	<body>
+		<div id="done">
+			<p>
+				We've all been there, GMs. You have this finely crafted story and a PC decides to <em>punch the guard captain</em>
+			<p>
+				Suddenly you find yourself in the need of some hard stats. But who has time to spend statting out an NPC or even scrabbling through the Gallery hoping for a close match?
+			</p>
+			<p>
+				<strong>Now there's a tool!</strong> NPC builder gives you:
+			</p>
+			<ul>
+				<li>Quick interface that doesn't wast time on fiddly details</li>
+				<li>Produce stats in an intelligent manner and adhering to rules</li>
+				<li>Present those stats in a convenient form for a GM on the go</li>
+			</ul>
+			<p>
+				<button onclick="hideMe()">That's cool. Hide this.</button>
+			</p>
+			<script>
+				function hideMe(){ 
+					$( "#done" ).stop(true, true).fadeOut({ duration: "slow", queue: false }).slideUp( "slow" );
+				}
+			</script>
+			
+		</div>
+		<!-- Options chosen below this point -->
+		<form name="choices">
+			<fieldset class="abilities" title="Drag and drop abilities into the order of importance.">
+				<legend>Ability Priority</legend>						
+				
+				<ul id="ability-preference">
+					<li id="str" name="apreferences" class="ability-list-item">STR</li>
+					<li id="dex" name="apreferences" class="ability-list-item">DEX</li>
+					<li id="con" name="apreferences" class="ability-list-item">CON</li>
+					<li id="int" name="apreferences" class="ability-list-item">INT</li>
+					<li id="wis" name="apreferences" class="ability-list-item">WIS</li>
+					<li id="cha" name="apreferences" class="ability-list-item">CHA</li>
+				</ul>
+				<!--Fairwell custom drag and drop code. Sniff
+				<div name="dropzones" id="pref1" ondrop="onAbilityDrop(event)" ondragover="onADragOver(event)">
+					<div class="apreferences" name="apreferences" id="str" draggable="true" ondragstart="onAbilityDrag(event)" >STR</div>
+				</div>
+				<div name="dropzones"  id="pref2" ondrop="onAbilityDrop(event)" ondragover="onADragOver(event)">
+					<div class="apreferences" name="apreferences" id="dex" draggable="true" ondragstart="onAbilityDrag(event)">DEX</div>
+				</div>
+				<div name="dropzones"  id="pref3" ondrop="onAbilityDrop(event)" ondragover="onADragOver(event)">
+					<div class="apreferences" name="apreferences" id="con" draggable="true" ondragstart="onAbilityDrag(event)" >CON</div>
+				</div>
+				<div name="dropzones"  id="pref4" ondrop="onAbilityDrop(event)" ondragover="onADragOver(event)">
+					<div class="apreferences" name="apreferences" id="int" draggable="true" ondragstart="onAbilityDrag(event)" >INT</div>
+				</div>
+				<div name="dropzones" id="pref5" ondrop="onAbilityDrop(event)" ondragover="onADragOver(event)">
+					<div class="apreferences" name="apreferences" id="wis" draggable="true" ondragstart="onAbilityDrag(event)" >WIS</div>
+				</div>
+					<div name="dropzones" id="pref6" ondrop="onAbilityDrop(event)" ondragover="onADragOver(event)">
+				<div class="apreferences" name="apreferences" id="cha" draggable="true" ondragstart="onAbilityDrag(event)" >CHA</div>
+				</div>-->
+			</fieldset>
+			
+			<div class="skillpreferences">
+				<fieldset>
+				<legend>Skill Preference</legend>
+						<input type="radio" name="skillpref" value="focused" checked="checked"/>
+							<span  title="Puts max ranks in skills, preferring class skills">Focused</span>
+						<input type="radio" name="skillpref" value="dabbler"/>
+							<span title="Spends up to 50% skill points at half max ranks, preferring class skills">Dabbler</span>	
+							<hr/>
+						<input type="checkbox" name="whimsy" id="whimsy"/>
+							<span title="Spends up to 25% of skill points maxing non-class skills">Whimsy</span>
+						<input type="checkbox" id="favor-bonuses"/>
+							<span title="Adds chance weight to skills with class or racial bonuses">Favor Bonuses</span>
+							<br/>
+						<input type="checkbox" id="day-job"/>
+							<span title="Greatly increases chance that profession or craft skills will be taken">Day Job</span>
+						<input type="checkbox" id="favor-abilities"/>
+							<span title="Adds weight to skills with high ability scores">Favor Abilities</span>
+							<br/>
+						<input type="checkbox" id="no-fly" checked=true/>
+							<span title="Don't ever put ranks in fly">No Fly</span>
+				</fieldset>
+			</div>
+		
+			<fieldset >
+				<legend>Race</legend>
+				<div class="accordion">
+					<h3>Core</h3>
+					<div>
+						<label><input type="radio" name="race" value="human" checked="checked" />Human</label>
+						<label><input type="radio" name="race" value="elf"/>Elf</label>
+						<label><input type="radio" name="race" value="dwarf"/>Dwarf</label>
+						<label><input type="radio" name="race" value="gnome"/>Gnome</label>
+						<label><input type="radio" name="race" value="halfling"/>Halfling</label>
+						<label><input type="radio" name="race" value="half elf"/>Half Elf</label>
+						<label><input type="radio" name="race" value="half orc"/>Half Orc</label>
+					</div>
+					<h3>Featured</h3>
+					<div>
+						<label><input type="radio" name="race" value="aasimar"/>Aasimar</label>
+						<label><input type="radio" name="race" value="catfolk"/>Catfolk</label>
+						<label><input type="radio" name="race" value="damphir"/>Damphir</label>
+						<label><input type="radio" name="race" value="goblin"/>Goblin</label>
+						<label><input type="radio" name="race" value="hobgoblin"/>Hobgoblin	</label>
+						<label><input type="radio" name="race" value="kobold"/>Kobold</label>
+						<label><input type="radio" name="race" value="orc"/>Orc</label>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset id="class-field">
+				<legend>Class</legend>
+				<div class="expandable">
+				
+					<h3 class="expandable-open"><span class="icon ui-icon ui-icon-triangle-1-e"></span>NPC</h3>					
+					<div>
+						<label><input name="class-choice" class="class-choice" associated="warrior"/> Warrior</label>
+						<label><input name="class-choice" class="class-choice" associated="expert"/> Expert</label>
+						<label><input name="class-choice" class="class-choice" associated="commoner"/> Commoner</label>
+						<label><input name="class-choice" class="class-choice" associated="aristocrat"/> Aristocrat</label>
+						<label><input name="class-choice" class="class-choice" associated="adept"/> Adept</label>
+					</div>
+					<h3 class="expandable-closed"><span class="icon ui-icon ui-icon-triangle-1-s"></span>Core</h3>
+					<div>
+						<label><input name="class-choice" class="class-choice" associated="barbarian"/> Barbarian</label>
+						<label><input name="class-choice" class="class-choice" associated="fighter"/> Fighter</label>
+						<label><input name="class-choice" class="class-choice" associated="rogue"/> Rogue</label>
+						<label><input name="class-choice" class="class-choice" associated="ranger"/> Ranger</label>
+						<label><input name="class-choice" class="class-choice" associated="paladin"/> Paladin</label>
+						<label><input name="class-choice" class="class-choice" associated="monk"/> Monk</label>
+					</div>
+					<!--<h3>NPC</h3>					
+					<div>
+						<label><input name="class-choice" type="number" associated="warrior"/> Warrior</label>
+						<label><input name="class-choice" type="number" associated="expert"/> Expert</label>
+						<label><input name="class-choice" type="number" associated="commoner"/> Commoner</label>
+						<label><input name="class-choice" type="number" associated="aristocrat"/> Aristocrat</label>
+						<label><input name="class-choice" type="number" associated="adept"/> Adept</label>
+					</div>
+				<h3>Core</h3>
+					<div>
+						<label><input name="class-choice" type="number" associated="barbarian"/> Barbarian</label>
+						<label><input name="class-choice" type="number" associated="fighter"/> Fighter</label>
+						<label><input name="class-choice" type="number" associated="rogue"/> Rogue</label>
+						<label><input name="class-choice" type="number" associated="ranger"/> Ranger</label>
+						<label><input name="class-choice" type="number" associated="paladin"/> Paladin</label>
+					</div>-->
+				</div>
+			</fieldset>			
+		</form>
+		<button class="button-make" onclick="makeNPC2()">
+			<span class="ui-icon ui-icon-circle-plus button-make-icon"></span>
+			<span style="vertical-align:middle">Make NPC!</span>
+		</button>
+		<!-- Stat Block produced below this point -->
+		
+			<div id="statBlock"></div>
+	</body>
+</html>
